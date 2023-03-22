@@ -1,6 +1,9 @@
 import { ratio } from "fuzzball"
+import { writeFile, readFileSync } from "fs"
 
 export class Quiz {
+    private key
+
     public questions
 
     public currentIndex = 0
@@ -11,15 +14,34 @@ export class Quiz {
         [key: number]: number
     } = {}
 
-    constructor(questions: Question[]) {
+    constructor(key: string, questions: Question[]) {
+        this.key = key
         this.questions = questions
+
+        try {
+            const stateString = readFileSync(`./data/${this.key}.json`, {encoding: "utf-8"})
+            const state = JSON.parse(stateString)
+            this.answered = state.answered ?? {}
+            this.currentIndex = state.currentIndex ?? 0
+        } catch {
+            // ignore errs
+        }
+    }
+
+    private saveState() {
+        writeFile(`./data/${this.key}.json`, JSON.stringify({
+            answered: this.answered,
+            currentIndex: this.currentIndex,
+        }), {encoding: "utf-8"}, () => {
+            console.log("saved")
+        })
     }
 
     public get currentQuestion() {
         return this.questions[this.currentIndex]
     }
 
-    answer(uid: number, text: string): boolean {
+    answer(uid: number, text: string): false | string {
         if (this.pause || this.answered[this.currentIndex]) {
             return false
         }
@@ -29,14 +51,17 @@ export class Quiz {
         if (r >= 90) {
             this.pause = true
             this.answered[this.currentIndex] = uid
-            return true
+            this.currentIndex++
+
+            this.saveState()
+            return current.answer
         }
         return false
     }
 
     nextQuestion(): string | null {
-        this.currentIndex++
         this.pause = false
+        this.saveState()
         return this.currentQuestion?.question ?? null
     }
     
@@ -59,12 +84,12 @@ export class Quiz {
     }
 }
 
-type Question = {
+export type Question = {
     question: string
     answer: string
 }
 
-type Score = {
+export type Score = {
     userId: number
     score: number
 }

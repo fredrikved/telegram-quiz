@@ -41,7 +41,7 @@ export const one = [
     }
 ]
 
-const two = [
+export const two = [
     {
         "question": "Hva heter hovedstaden i Norge?",
         "answer": "Oslo"
@@ -79,15 +79,15 @@ const two = [
         "answer": "Glomma"
     },
     {
-        "question": "Hva er navnet på Norges nasjonaldag?",
+        "question": "Hva er Norges nasjonaldag?",
         "answer": "17. mai"
     },
     {
-        "question": "Hva er navnet på verdens største kontinent?",
+        "question": "Hva er verdens største kontinent?",
         "answer": "Asia"
     },
     {
-        "question": "Hva heter Norges største øy?",
+        "question": "Hva heter fastlands-Norges største øy?",
         "answer": "Hinnøya"
     },
     {
@@ -113,10 +113,6 @@ const two = [
     {
         "question": "Hva er navnet på verdens høyeste fjell?",
         "answer": "Mount Everest"
-    },
-    {
-        "question": "Hva heter verdens største ørken?",
-        "answer": "Sahara"
     },
     {
         "question": "Hvem skrev boken 'Pippi Langstrømpe'?",
