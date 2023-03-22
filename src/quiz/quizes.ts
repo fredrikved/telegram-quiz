@@ -124,7 +124,7 @@ export const two = [
     },
     {
         "question": "Hva heter Norges nest lengste elv?",
-        "answer": "Trysil"
+        "answer": "Pasvikelva"
     },
     {
         "question": "Hva heter verdens største elv?",

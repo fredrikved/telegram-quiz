@@ -78,7 +78,7 @@ export class Quiz {
         this.sentDate = new Date()
         const q = this.currentQuestion?.question
         if (q) {
-            return `Spørsmål ${this.currentIndex + 1} av ${this.questions.length}: \n\n${q}`
+            return `Spørsmål ${this.currentIndex + 1} av ${this.questions.length}: \n\n<b>${q}</b>`
         }
         return null
     }
