@@ -13,12 +13,18 @@ if (!token) {
 
 const bot = new TelegramBot(token, {polling: true})
 
-const quiz = new Quiz("two", two)
-
 const response = (answer: string, name: string) => {
     const spacer = "-----------------"
 
     return `${spacer}\nRiktig, ${name}!\n\nSvaret var: ${answer}.\n${spacer}`;
+}
+
+const quizes: {
+    [key: number]: Quiz
+} = {}
+
+const getOrSetQuiz = (chatId: number) => {
+    return quizes[chatId] ??= new Quiz("two-" + chatId, two)
 }
 
 const scoreboard = async (chatId: number, scores: Score[]) => {
@@ -45,9 +51,16 @@ const scoreboard = async (chatId: number, scores: Score[]) => {
 }
 
 bot.onText(/(.*)/, async (msg, match) => {
+    const quiz = getOrSetQuiz(msg.chat.id)
     if (match?.[0] === "/scores") {
         await scoreboard(msg.chat.id, quiz.scores())
     }
+
+    if (match?.[0] === "/resume") {
+        await bot.sendMessage(msg.chat.id, quiz.currentQuestion.question)
+        quiz.sentDate = new Date()
+    }
+
     if (match?.[0] === "/start" && msg.from?.username === "FredrikV") {
         quiz.pause = true
         await bot.sendMessage(msg.chat.id, "Er dere klare for en interessant, insane, livsfarlig og original quiz som definitivt ikke er generert av en AI?")

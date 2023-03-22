@@ -59,7 +59,7 @@ export const two = [
         "answer": "Mjøsa"
     },
     {
-        "question": "Hvem skrev boken 'Sult'?",
+        "question": "Hvem skrev boken 'Sult' (1890)?",
         "answer": "Knut Hamsun"
     },
     {

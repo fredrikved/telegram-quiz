@@ -21,7 +21,7 @@ export class Quiz {
         }
     } = {}
 
-    public sentDate: Date | null = null
+    public sentDate: Date = new Date()
 
     constructor(key: string, questions: Question[]) {
         this.key = key
@@ -76,7 +76,11 @@ export class Quiz {
         this.pause = false
         this.saveState()
         this.sentDate = new Date()
-        return this.currentQuestion?.question ?? null
+        const q = this.currentQuestion?.question
+        if (q) {
+            return `Spørsmål ${this.currentIndex + 1} av ${this.questions.length}: \n\n${q}`
+        }
+        return null
     }
     
     scores(): Score[] {
