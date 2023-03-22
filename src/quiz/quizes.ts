@@ -156,10 +156,10 @@ export const two = [
     { "question": "Hva heter Norges nest største fjell?", "answer": "Glittertind" },
     { "question": "Hva var det første leketøyet som ble annonsert på TV?", "answer": "Mr. Potato Head" }, 
     { "question": "Hvilket land har verdens lengste gjerde?", "answer": "Australia" }, 
-    { "question": "Hva er det største organet i menneskekroppen?", "answer": "Hud" }, 
-    { "question": "Hvilket bokstav er det eneste i det engelske alfabetet som ikke finnes i noen statnavn i USA?", "answer": "Q" }, 
-    { "question": "Hva er det berømte landemerket som befinner seg både i den nordlige og østlige halvkule?", "answer": "The Prime Meridian ved Royal Observatory i Greenwich, London" }, 
-    { "question": "Hva er det eneste pattedyret som virkelig kan fly?", "answer": "Flaggermus" }, { "question": "Hva er den største ørkenen i verden?", "answer": "Antarktis" }, 
-    { "question": "Hva er verdens minste land etter landareal?", "answer": "Vatikanstaten" }, { "question": "Hvilken verdensdel har ingen bier?", "answer": "Antarktis" }, 
+    { "question": "Hva er det største organet i menneskekroppen?", "answer": "Huden" }, 
+    { "question": "Hvilket bokstav er det eneste i det engelske alfabetet som ikke finnes i noen statnavn i USA?", "answer": "Q" },
+    { "question": "Hva er det eneste pattedyret som virkelig kan fly?", "answer": "Flaggermus" }, 
+    { "question": "Hva er verdens minste land etter landareal?", "answer": "Vatikanstaten" }, 
+    { "question": "Hvilken verdensdel har ingen bier?", "answer": "Antarktis" }, 
     { "question": "Hva var det første videospillet som ble spilt i verdensrommet?", "answer": "Tetris" }
 ]
