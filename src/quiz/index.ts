@@ -1,6 +1,10 @@
 import { ratio } from "fuzzball"
 import { writeFile, readFileSync } from "fs"
 
+const floor = (date: Date) => {
+    return Math.floor(date.getTime()/1000)
+}
+
 export class Quiz {
     private key
 
@@ -11,8 +15,13 @@ export class Quiz {
     public pause = false
 
     public answered: {
-        [key: number]: number
+        [key: number]: {
+            userId: number
+            score: number
+        }
     } = {}
+
+    public sentDate: Date | null = null
 
     constructor(key: string, questions: Question[]) {
         this.key = key
@@ -50,7 +59,11 @@ export class Quiz {
         const r = ratio(current.answer, text)
         if (r >= 90) {
             this.pause = true
-            this.answered[this.currentIndex] = uid
+            const diff = floor(new Date()) - floor(this.sentDate!)
+            this.answered[this.currentIndex] = {
+                userId: uid,
+                score: 30 - diff
+            }
             this.currentIndex++
 
             this.saveState()
@@ -62,20 +75,21 @@ export class Quiz {
     nextQuestion(): string | null {
         this.pause = false
         this.saveState()
+        this.sentDate = new Date()
         return this.currentQuestion?.question ?? null
     }
     
     scores(): Score[] {
         const scores: Score[] = []
 
-        for (const uid of Object.values(this.answered)) {
-            const existing = scores.find(i => i.userId == uid)
+        for (const answer of Object.values(this.answered)) {
+            const existing = scores.find(i => i.userId == answer.userId)
             if (existing) {
-                existing.score++
+                existing.score += answer.score
             } else {
                 scores.push({
-                    userId: uid,
-                    score: 1,
+                    userId: answer.userId,
+                    score: answer.score,
                 })
             }
         }
