@@ -53,15 +53,10 @@ bot.onText(/(.*)/, async (msg, match) => {
         await new Promise(r => setTimeout(r, 5000))
         await bot.sendMessage(msg.chat.id, "Vi har brukt uker på å nøye håndplukke hvert spørsmål fra gamle leksikoner og støvete faktabøker som ikke en gang bibliotekarer ville plukket opp.")
         await new Promise(r => setTimeout(r, 5000))
-
         await bot.sendMessage(msg.chat.id, "Regler: \n - 10 poeng til første person som svarer riktig \n - Maks 30 sekunder per spørsmål \n - Vinneren er den med flest poeng etter alle spørsmåla")
-
         await new Promise(r => setTimeout(r, 5000))
-
         await bot.sendMessage(msg.chat.id, "Lykke til... Dere kommer til å trenge det.")
-
         await new Promise(r => setTimeout(r, 5000))
-    
         await bot.sendMessage(msg.chat.id, "Første spørsmål: \n\n" + quiz.currentQuestion.question)
 
         quiz.pause = false
