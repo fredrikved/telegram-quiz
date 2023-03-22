@@ -17,6 +17,7 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "fuse.js": "^6.6.2",
+    "fuzzball": "^2.1.2",
     "node-telegram-bot-api": "^0.61.0"
   }
 }

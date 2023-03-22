@@ -1,4 +1,4 @@
-import Fuse from "fuse.js"
+import { ratio } from "fuzzball"
 
 export class Quiz {
     public questions
@@ -25,11 +25,8 @@ export class Quiz {
         }
 
         const current = this.questions[this.currentIndex]
-        const fuse = new Fuse([current.answer], {includeScore: true})
-
-        const matches = fuse.search(text)
-        console.log(matches)
-        if (matches.filter(m => m.score! < 0.4).length) {
+        const r = ratio(current.answer, text)
+        if (r >= 90) {
             this.pause = true
             this.answered[this.currentIndex] = uid
             return true
