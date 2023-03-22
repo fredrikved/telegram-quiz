@@ -50,16 +50,16 @@ bot.onText(/(.*)/, async (msg, match) => {
     }
     if (match?.[0] === "/start" && msg.from?.username === "FredrikV") {
         quiz.pause = true
-        // await bot.sendMessage(msg.chat.id, "Er dere klare for en interessant, insane, livsfarlig og original quiz som definitivt ikke er generert av en AI?")
-        // await new Promise(r => setTimeout(r, 2000))
-        // await bot.sendMessage(msg.chat.id, "Vi kan garantere deg at dette ikke er en samling av tilfeldige spørsmål generert av en kraftig datamaskin med tilgang til internett. Absolutt ikke.")
-        // await new Promise(r => setTimeout(r, 5000))
-        // await bot.sendMessage(msg.chat.id, "Vi har brukt uker på å nøye håndplukke hvert spørsmål fra gamle leksikoner og støvete faktabøker som ikke en gang bibliotekarer ville plukket opp.")
-        // await new Promise(r => setTimeout(r, 5000))
-        // await bot.sendMessage(msg.chat.id, "Regler: \n - Opptill 30 poeng til første person som svarer riktig \n - Mulig poeng synker med 1 per sekund \n - Maks 30 sekunder per spørsmål \n - Vinneren er den med flest poeng etter alle spørsmåla \n - Såkalt googling er oppfordret, for dette blir vanskelig ")
-        // await new Promise(r => setTimeout(r, 5000))
-        // await bot.sendMessage(msg.chat.id, "Lykke til... Dere kommer til å trenge det.")
-        // await new Promise(r => setTimeout(r, 5000))
+        await bot.sendMessage(msg.chat.id, "Er dere klare for en interessant, insane, livsfarlig og original quiz som definitivt ikke er generert av en AI?")
+        await new Promise(r => setTimeout(r, 2000))
+        await bot.sendMessage(msg.chat.id, "Vi kan garantere deg at dette ikke er en samling av tilfeldige spørsmål generert av en kraftig datamaskin med tilgang til internett. Absolutt ikke.")
+        await new Promise(r => setTimeout(r, 5000))
+        await bot.sendMessage(msg.chat.id, "Vi har brukt uker på å nøye håndplukke hvert spørsmål fra gamle leksikoner og støvete faktabøker som ikke en gang bibliotekarer ville plukket opp.")
+        await new Promise(r => setTimeout(r, 5000))
+        await bot.sendMessage(msg.chat.id, "Regler: \n - Opptill 30 poeng til første person som svarer riktig \n - Mulig poeng synker med 1 per sekund \n - Maks 30 sekunder per spørsmål \n - Vinneren er den med flest poeng etter alle spørsmåla \n - Såkalt googling er oppfordret, for dette blir vanskelig ")
+        await new Promise(r => setTimeout(r, 5000))
+        await bot.sendMessage(msg.chat.id, "Lykke til... Dere kommer til å trenge det.")
+        await new Promise(r => setTimeout(r, 5000))
         await bot.sendMessage(msg.chat.id, "Første spørsmål av " + quiz.questions.length + ": \n\n" + quiz.currentQuestion.question)
 
         quiz.pause = false
